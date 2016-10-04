@@ -1,0 +1,42 @@
+<link rel="import" href="./bower_components/polymer/polymer.html">
+<link rel="import" href="./bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="./bower_components/iron-icons/iron-icons.html">
+<dom-module id="star-rating">
+    <template>
+        <style>
+            :host {
+            }
+            .selected{
+                color:#4775D1;
+            }
+            .empty{
+                color: gray;
+            }
+        </style>
+        <paper-icon-button id="1" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
+        <paper-icon-button id="2" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
+        <paper-icon-button id="3" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
+        <paper-icon-button id="4" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
+        <paper-icon-button id="5" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
+    </template>
+
+    <script>
+        Polymer({
+            is: "star-rating",
+            observers: [],
+            behaviors:[],
+            listeners: {},
+            properties: {
+                rate:{
+                    type:Number,
+                    value:0
+                },
+                
+            },
+
+            _iconHover: function(e){
+                alert(e.currentTarget.id);
+            }
+        });
+    </script>
+</dom-module>

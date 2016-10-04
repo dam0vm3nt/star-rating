@@ -1,0 +1,18 @@
+<!doctype html>
+<html >
+    <head >
+        <link rel="import" href="./star-rating.html">
+    </head>
+    <body >
+        <star-rating ></star-rating>
+        <script >
+            var blurred = false;
+            window.onblur = function () {
+                blurred = true;
+            };
+            window.onfocus = function () {
+                blurred && (location.reload());
+            };
+        </script>
+    </body>
+</html>
