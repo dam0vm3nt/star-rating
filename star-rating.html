@@ -22,38 +22,34 @@
             is: "star-rating",
             observers: [],
             behaviors: [],
-            listeners: {
-            },
+            listeners: {},
             properties: {
-                stars:{
-                    type:Array,
-                    value:[0, 0, 0, 0, 0]
+                stars: {
+                    type: Array,
+                    value: [0, 0, 0, 0, 0]
                 },
                 rate: {
                     type: Number,
                     value: 0
                 }
             },
-            _updateState: function(){
+            _updateState: function () {
                 var array = this.stars;
                 this.stars = [];
                 this.stars = array;
             },
-            _clean: function(){
-                for(var i=0 ;i < 5 ;i ++ ){
-                    this.stars[i]=0 ;
-                }
-                this._updateState() ;
+            _clean: function () {
+                for (var i = 0; i < 5; i++)
+                    this.stars[i] = 0;
+                this._updateState();
             },
             _iconHover: function (e) {
                 var id = parseInt(e.currentTarget.id);
-                for (var i = 0; i <= id; i++) {
+                for (var i = 0; i <= id; i++)
                     this.stars[i] = 1;
-                }
-                for (var i1 = id + 1; i1 < 5; i1++) {
+                for (var i1 = id + 1; i1 < 5; i1++)
                     this.stars[i1] = 0;
-                }
-                this._updateState() ;
+                this._updateState();
             }
         });
     </script>
