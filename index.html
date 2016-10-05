@@ -4,13 +4,23 @@
         <link rel="import" href="./star-rating.html">
     </head>
     <body >
-        <star-rating read-only rate="3.5">
+        <star-rating rate="1">
+        </star-rating>
+        <star-rating rate="2">
+        </star-rating>
+        <star-rating read-only rate="4.5">
             <div votes>
-                &nbsp (14 calificaciones)
+                &nbsp (15 calificaciones)
             </div>
         </star-rating>
+        <star-rating read-only rate="2" >
+            <div votes>
+                &nbsp (13 calificaciones)
+            </div>
+        </star-rating>
+
         <script >
-            // var blurred = false; window.onblur = function () {     blurred = true; }; window.onfocus = function () {     blurred && (location.reload()); };
+            var blurred = false; window.onblur = function () {     blurred = true; }; window.onfocus = function () {     blurred && (location.reload()); };
         </script>
     </body>
 </html>
