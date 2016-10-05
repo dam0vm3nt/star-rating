@@ -1,24 +1,11 @@
 <!doctype html>
 <html >
     <head >
-        <link rel="import" href="./star-rating.html">
+        <link rel="import" href="./pe-holder.html">
     </head>
+
     <body >
-        <star-rating  rate="1">
-        </star-rating>
-        <star-rating color="red" rate="2">
-        </star-rating>
-        <star-rating color="yellow" read-only rate="4.5">
-            <div votes>
-                &nbsp (15 calificaciones)
-            </div>
-        </star-rating>
-        <star-rating color="#4775D1"  read-only rate="2" >
-            <div votes>
-                &nbsp (13 calificaciones)
-            </div>
-        </star-rating>
-        <button onclick="dbug()">showInfo</button>
+        <pe-holder color="green"></pe-holder>
         <script >
             var blurred = false; window.onblur = function () {     blurred = true; }; window.onfocus = function () {     blurred && (location.reload()); };
         </script>

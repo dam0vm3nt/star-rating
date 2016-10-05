@@ -6,13 +6,13 @@
     <template>
         <style>
             :host {
-                --color: #4775D1 ;
+                --star-color: #4775D1 ;
             }
             iron-icon {
-                color: var(--color);
+                color: var(--star-color);
             }
             paper-icon-button {
-                color: var(--color);
+                color: var(--star-color);
                 --paper-icon-button-disabled: {
                     color: #4775D1;
                 };
@@ -56,19 +56,11 @@
                 readOnly: {
                     type: Boolean,
                     value: false
-                },
-                // color for stars
-                color: {
-                    type: String
                 }
             },
             ready: function () {
                 this._updateStars();
                 this.$.domRepeat.render();
-            },
-            attached: function () {
-                this.customStyle['--color'] = this.color;
-                this.updateStyles();
             },
             _updateRate: function (e) {
                 var id = parseInt(e.currentTarget.id);

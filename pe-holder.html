@@ -1,0 +1,33 @@
+<link rel="import" href="./star-rating.html">
+<dom-module id="pe-holder">
+    <template>
+        <style>
+            :host {
+                --color: purple;
+            }
+            [red] {
+                --star-color: red;
+            }
+        </style>
+        <star-rating red rate="4"></star-rating>
+        <star-rating rate="2.3"></star-rating>
+        <star-rating red rate="3.6"></star-rating>
+    </template>
+    <script>
+        Polymer({
+            is: "pe-holder",
+            observers: [],
+            behaviors: [],
+            listeners: {},
+            properties: {
+                color:{
+                    type:String
+                }
+            },
+            attached: function () {
+                this.customStyle['--color'] = this.color;
+                this.updateStyles();
+            }
+        });
+    </script>
+</dom-module>
