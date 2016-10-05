@@ -7,14 +7,19 @@
             :host {}
             paper-icon-button {
                 color: #4775D1;
-                --paper-icon-button-disabled:{
+                --paper-icon-button-disabled: {
                     color: #4775D1;
                 };
             }
+            [score] {
+                @apply(--layout-horizontal);
+            }
         </style>
-        <template is="dom-repeat" items="{{stars}}" as="star">
-            <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
-        </template>
+        <div score>
+            <template is="dom-repeat" items="{{stars}}" as="star">
+                <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
+            </template>
+        </div>
     </template>
     <script>
         Polymer({
@@ -24,21 +29,21 @@
             listeners: {},
             properties: {
                 // number of stars assigned for score
-                stars:{
-                    type:Array,
-                    value:["star-half", "star-border", "star-half", "star", "star-border"]
+                stars: {
+                    type: Array,
+                    value: ["", "", "star-half", "star", "star-border"]
                 },
                 rate: {
                     type: Number,
-                    value: 3.5
+                    value: 0
                 },
-                readOnly:{
-                    type:Boolean,
-                    value:false
+                readOnly: {
+                    type: Boolean,
+                    value: false
                 }
             },
             ready: function () {
-                this._updateStars() ;
+                this._updateStars();
             },
             _updateRate: function (e) {
                 var id = parseInt(e.currentTarget.id);
@@ -48,13 +53,13 @@
             _updateStars: function () {
                 var intPart = Math.floor(this.rate);
                 var decimalPart = this.rate % 1;
-                for (var i = 0; i < 5; i++){
-                    this.stars[i]="star-border" ;
-                    if(i<intPart)
+                for (var i = 0; i < 5; i++) {
+                    this.stars[i] = "star-border";
+                    if (i < intPart)
                         this.stars[i] = "star";
-                }
-                if(decimalPart >= 0.5)
-                    this.stars[intPart] = "star-half" ;
+                    }
+                if (decimalPart >= 0.5)
+                    this.stars[intPart] = "star-half";
                 var array = this.stars;
                 this.stars = [];
                 this.stars = array;
