@@ -7,10 +7,13 @@
             :host {}
             paper-icon-button {
                 color: #4775D1;
+                --paper-icon-button-disabled:{
+                    color: #4775D1;
+                };
             }
         </style>
         <template is="dom-repeat" items="{{stars}}" as="star">
-            <paper-icon-button id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
+            <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
         </template>
     </template>
     <script>
@@ -28,6 +31,10 @@
                 rate: {
                     type: Number,
                     value: 3.5
+                },
+                readOnly:{
+                    type:Boolean,
+                    value:false
                 }
             },
             ready: function () {
