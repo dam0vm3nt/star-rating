@@ -5,38 +5,55 @@
 <dom-module id="star-rating">
     <template>
         <style>
-            :host {
+            :host {}
+            paper-icon-button {
+                color: #4775D1;
             }
-            .selected{
-                color:#4775D1;
-            }
-            .empty{
+            .c0 {
                 color: gray;
             }
         </style>
-        <paper-icon-button id="1" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
-        <paper-icon-button id="2" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
-        <paper-icon-button id="3" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
-        <paper-icon-button id="4" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
-        <paper-icon-button id="5" on-mouseover="_iconHover" icon="icons:star"></paper-icon-button>
+        <template is="dom-repeat" items="{{stars}}" as="star">
+            <paper-icon-button id="{{index}}" class$="c{{star}}" on-mouseover="_iconHover" icon="icons:star" on-mouseout="_clean"></paper-icon-button>
+        </template>
     </template>
-
     <script>
         Polymer({
             is: "star-rating",
             observers: [],
-            behaviors:[],
-            listeners: {},
-            properties: {
-                rate:{
-                    type:Number,
-                    value:0
-                },
-
+            behaviors: [],
+            listeners: {
             },
-
-            _iconHover: function(e){
-                alert(e.currentTarget.id);
+            properties: {
+                stars:{
+                    type:Array,
+                    value:[0, 0, 0, 0, 0]
+                },
+                rate: {
+                    type: Number,
+                    value: 0
+                }
+            },
+            _updateState: function(){
+                var array = this.stars;
+                this.stars = [];
+                this.stars = array;
+            },
+            _clean: function(){
+                for(var i=0 ;i < 5 ;i ++ ){
+                    this.stars[i]=0 ;
+                }
+                this._updateState() ;
+            },
+            _iconHover: function (e) {
+                var id = parseInt(e.currentTarget.id);
+                for (var i = 0; i <= id; i++) {
+                    this.stars[i] = 1;
+                }
+                for (var i1 = id + 1; i1 < 5; i1++) {
+                    this.stars[i1] = 0;
+                }
+                this._updateState() ;
             }
         });
     </script>
