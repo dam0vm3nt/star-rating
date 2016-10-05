@@ -6,7 +6,7 @@
     <template>
         <style>
             :host {}
-            iron-icon{
+            iron-icon {
                 color: #4775D1;
             }
             paper-icon-button {
@@ -20,22 +20,20 @@
                 @apply(--layout-center);
             }
         </style>
-        <template is="dom-if" if="[[!readOnly]]">
-            <div score>
-                <template is="dom-repeat" items="{{_stars}}" as="star">
-                    <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
-                </template>
-            </div>
-        </template>
-        <template is="dom-if" if="[[readOnly]]">
-            <div score>
-                <template is="dom-repeat" items="{{_stars}}" as="star">
+        <div score>
+            {{rate}}
+            <template id="domRepeat" is="dom-repeat" items="{{_stars}}" as="star">
+                <template is="dom-if" if="[[readOnly]]">
                     <iron-icon icon="{{star}}"></iron-icon>
                 </template>
+                <template is="dom-if" if="[[!readOnly]]">
+                    <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
+                </template>
+            </template>
+            <template is="dom-if" if="[[readOnly]]">
                 <content select='[votes]'></content>
-            </div>
-        </template>
-
+            </template>
+        </div>
     </template>
     <script>
         Polymer({
@@ -60,6 +58,7 @@
             },
             ready: function () {
                 this._updateStars();
+                this.$.domRepeat.render();
             },
             _updateRate: function (e) {
                 var id = parseInt(e.currentTarget.id);
