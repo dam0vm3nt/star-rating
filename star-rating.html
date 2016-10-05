@@ -1,7 +1,6 @@
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
 <dom-module id="star-rating">
     <template>
         <style>
@@ -9,12 +8,9 @@
             paper-icon-button {
                 color: #4775D1;
             }
-            .c0 {
-                color: gray;
-            }
         </style>
         <template is="dom-repeat" items="{{stars}}" as="star">
-            <paper-icon-button id="{{index}}" class$="c{{star}}" on-mouseover="_iconHover" icon="icons:star" on-mouseout="_clean"></paper-icon-button>
+            <paper-icon-button id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
         </template>
     </template>
     <script>
@@ -24,32 +20,37 @@
             behaviors: [],
             listeners: {},
             properties: {
-                stars: {
-                    type: Array,
-                    value: [0, 0, 0, 0, 0]
+                // number of stars assigned for score
+                stars:{
+                    type:Array,
+                    value:["star-half", "star-border", "star-half", "star", "star-border"]
                 },
                 rate: {
                     type: Number,
-                    value: 0
+                    value: 3.5
                 }
             },
-            _updateState: function () {
+            ready: function () {
+                this._updateStars() ;
+            },
+            _updateRate: function (e) {
+                var id = parseInt(e.currentTarget.id);
+                this.rate = id + 1;
+                this._updateStars();
+            },
+            _updateStars: function () {
+                var intPart = Math.floor(this.rate);
+                var decimalPart = this.rate % 1;
+                for (var i = 0; i < 5; i++){
+                    this.stars[i]="star-border" ;
+                    if(i<intPart)
+                        this.stars[i] = "star";
+                }
+                if(decimalPart >= 0.5)
+                    this.stars[intPart] = "star-half" ;
                 var array = this.stars;
                 this.stars = [];
                 this.stars = array;
-            },
-            _clean: function () {
-                for (var i = 0; i < 5; i++)
-                    this.stars[i] = 0;
-                this._updateState();
-            },
-            _iconHover: function (e) {
-                var id = parseInt(e.currentTarget.id);
-                for (var i = 0; i <= id; i++)
-                    this.stars[i] = 1;
-                for (var i1 = id + 1; i1 < 5; i1++)
-                    this.stars[i1] = 0;
-                this._updateState();
             }
         });
     </script>
