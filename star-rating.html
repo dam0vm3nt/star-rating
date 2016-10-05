@@ -5,12 +5,14 @@
 <dom-module id="star-rating">
     <template>
         <style>
-            :host {}
+            :host {
+                --color: #4775D1 ;
+            }
             iron-icon {
-                color: #4775D1;
+                color: var(--color);
             }
             paper-icon-button {
-                color: #4775D1;
+                color: var(--color);
                 --paper-icon-button-disabled: {
                     color: #4775D1;
                 };
@@ -21,7 +23,6 @@
             }
         </style>
         <div score>
-            {{rate}}
             <template id="domRepeat" is="dom-repeat" items="{{_stars}}" as="star">
                 <template is="dom-if" if="[[readOnly]]">
                     <iron-icon icon="{{star}}"></iron-icon>
@@ -42,23 +43,32 @@
             behaviors: [],
             listeners: {},
             properties: {
-                // number of _stars assigned for score
                 _stars: {
                     type: Array,
                     value: ["star", "star", "star-half", "star", "star-border"]
                 },
+                // number of _stars assigned for score
                 rate: {
                     type: Number,
                     value: 0
                 },
+                // show votes and disble scoring option
                 readOnly: {
                     type: Boolean,
                     value: false
+                },
+                // color for stars
+                color: {
+                    type: String
                 }
             },
             ready: function () {
                 this._updateStars();
                 this.$.domRepeat.render();
+            },
+            attached: function () {
+                this.customStyle['--color'] = this.color;
+                this.updateStyles();
             },
             _updateRate: function (e) {
                 var id = parseInt(e.currentTarget.id);
