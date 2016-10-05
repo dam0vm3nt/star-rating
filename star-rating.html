@@ -13,12 +13,14 @@
             }
             [score] {
                 @apply(--layout-horizontal);
+                @apply(--layout-center);
             }
         </style>
         <div score>
             <template is="dom-repeat" items="{{stars}}" as="star">
                 <paper-icon-button disabled$={{readOnly}} id="{{index}}" on-click="_updateRate" icon="{{star}}"></paper-icon-button>
             </template>
+            <content select='[votes]'></content>
         </div>
     </template>
     <script>
