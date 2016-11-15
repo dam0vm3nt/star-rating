@@ -1,5 +1,6 @@
 # star-rating
-acordeonl star-rating component
+
+Shows 5 star rating or enables a 5 star rating vote using paper-icon-button and iron-icon.
 
 <!---
 ```
@@ -28,5 +29,3 @@ acordeonl star-rating component
             </div>
         </star-rating>
 ```
-
-test text covas
