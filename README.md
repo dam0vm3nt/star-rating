@@ -14,18 +14,18 @@ Shows 5 star rating or enables a 5 star rating vote using paper-icon-button and 
 -->
 ```html
 <star-rating red rate="4"></star-rating>
-        <star-rating rate="2.3"></star-rating>
-        <star-rating red rate="3.6"></star-rating>
-        <star-rating red rate="2" read-only>
-            <div votes>
-                &nbsp (12
-                votes)
-            </div>
-        </star-rating>
-        <star-rating rate="1" read-only>
-            <div votes>
-                &nbsp 10
-                votes
-            </div>
-        </star-rating>
+<star-rating rate="2.3"></star-rating>
+<star-rating red rate="3.6"></star-rating>
+<star-rating red rate="2" read-only>
+    <div votes>
+        &nbsp (12
+        votes)
+    </div>
+</star-rating>
+<star-rating rate="1" read-only>
+    <div votes>
+        &nbsp 10
+        votes
+    </div>
+</star-rating>
 ```
