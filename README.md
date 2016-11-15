@@ -1,2 +1,32 @@
 # star-rating
 acordeonl star-rating component
+
+<!---
+```
+<custom-element-demo>
+  <template>
+    <link rel="import" href="star-rating.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<star-rating red rate="4"></star-rating>
+        <star-rating rate="2.3"></star-rating>
+        <star-rating red rate="3.6"></star-rating>
+        <star-rating red rate="2" read-only>
+            <div votes>
+                &nbsp (12
+                votes)
+            </div>
+        </star-rating>
+        <star-rating rate="1" read-only>
+            <div votes>
+                &nbsp 10
+                votes
+            </div>
+        </star-rating>
+```
+
+test text covas
