@@ -1,4 +1,6 @@
-# star-rating
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://beta.webcomponents.org/element/owner/my-element)
+
+## Star-rating
 
 Shows 5 star rating or enables a 5 star rating vote using paper-icon-button and iron-icon.
 
