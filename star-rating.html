@@ -67,7 +67,9 @@ If star-rating is for reading only it can be set the following way and using a d
     <script>
         Polymer({
             is: "star-rating",
-            observers: [],
+            observers: [
+		'_updateStars(rate)'
+	    ],
             behaviors: [],
             listeners: {},
             properties: {
@@ -78,6 +80,7 @@ If star-rating is for reading only it can be set the following way and using a d
                 // number of stars assigned for score
                 rate: {
                     type: Number,
+                    notify: true,
                     value: 0
                 },
                 // show votes and disble scoring option
@@ -95,7 +98,7 @@ If star-rating is for reading only it can be set the following way and using a d
                 this.rate = id + 1;
                 this._updateStars();
             },
-            _updateStars: function () {
+            _updateStars: function (_) {
                 var intPart = Math.floor(this.rate);
                 var decimalPart = this.rate % 1;
                 for (var i = 0; i < 5; i++) {
