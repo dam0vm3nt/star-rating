@@ -1,9 +1,8 @@
-<imports >
-    <link rel="import" href="../polymer/polymer.html">
-    <link rel="import" href="../paper-icon-button/paper-icon-button.html">
-    <link rel="import" href="../iron-icons/iron-icons.html">
-    <link rel="import" href="../iron-icon/iron-icon.html">
-</imports>
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-legacy.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
 
 <!--
 
@@ -61,7 +60,7 @@ If star-rating is for reading only it can be set the following way and using a d
                 </template>
             </template>
             <template is="dom-if" if="[[readOnly]]">
-                <content select='[votes]'></content>
+                <slot name='votes'></slot>
             </template>
         </div>
     </template>
