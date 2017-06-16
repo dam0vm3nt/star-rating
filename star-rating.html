@@ -108,9 +108,16 @@ If star-rating is for reading only it can be set the following way and using a d
                     }
                 if (decimalPart >= 0.5)
                     this._stars[intPart] = "star-half";
-                var array = this._stars;
-                this._stars = [];
-                this._stars = array;
+
+		this.notifyPath('_stars');
+		this.notifyPath('_stars.0');
+		this.notifyPath('_stars.1');
+		this.notifyPath('_stars.2');
+		this.notifyPath('_stars.3');
+		this.notifyPath('_stars.4');
+                //var array = this._stars;
+                //this._stars = [];
+                //this._stars = array;
             }
         });
     </script>
